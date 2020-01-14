@@ -51,7 +51,10 @@ public class PlayerController : MonoBehaviour
         {
             Rigidbody enemyRigidBody = collision.gameObject.GetComponent<Rigidbody>();
             Vector3 awayFromPlayer = collision.transform.position - this.transform.position;
-            enemyRigidBody.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
+            if (hasPowerup)
+            {
+                enemyRigidBody.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
+            }
         }
     }
 }
